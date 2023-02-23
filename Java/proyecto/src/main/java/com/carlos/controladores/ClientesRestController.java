@@ -11,6 +11,7 @@ import com.carlos.funeraria.dto.ClienteDTO;
 @RestController
 @RequestMapping("/v1")
 public class ClientesRestController {
+	@Autowired
 	
 	@GetMapping(value = "/clientes")
 	public List<ClienteDTO> recuperarTodosLosClientes() {
