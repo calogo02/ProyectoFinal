@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `serviciosfunerarios` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `serviciosfunerarios`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: serviciosfunerarios
@@ -64,6 +66,35 @@ LOCK TABLES `categoria` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `cliente`
+--
+
+DROP TABLE IF EXISTS `cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cliente` (
+  `idCliente` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `apellidos` varchar(45) NOT NULL,
+  `regimenFiscal` int NOT NULL,
+  `direccion` varchar(45) NOT NULL,
+  `metodoPago` varchar(45) NOT NULL,
+  PRIMARY KEY (`idCliente`),
+  KEY `regimenFiscal_idx` (`regimenFiscal`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cliente`
+--
+
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (1,'prueba','prueba',1,'c/falsa','tarjeta');
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cliente_descuento`
 --
 
@@ -75,7 +106,7 @@ CREATE TABLE `cliente_descuento` (
   `descuento` int NOT NULL,
   PRIMARY KEY (`cliente`,`descuento`),
   KEY `fk2_idx` (`descuento`),
-  CONSTRAINT `fk1descuento` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`idClientes`),
+  CONSTRAINT `fk1descuento` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`idCliente`),
   CONSTRAINT `fk2descuento` FOREIGN KEY (`descuento`) REFERENCES `descuento` (`iddescuento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -87,34 +118,6 @@ CREATE TABLE `cliente_descuento` (
 LOCK TABLES `cliente_descuento` WRITE;
 /*!40000 ALTER TABLE `cliente_descuento` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cliente_descuento` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `clientes`
---
-
-DROP TABLE IF EXISTS `clientes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `clientes` (
-  `idClientes` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) NOT NULL,
-  `apellidos` varchar(45) NOT NULL,
-  `regimenFiscal` int NOT NULL,
-  `direccion` varchar(45) NOT NULL,
-  `metodoPago` varchar(45) NOT NULL,
-  PRIMARY KEY (`idClientes`),
-  KEY `regimenFiscal_idx` (`regimenFiscal`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `clientes`
---
-
-LOCK TABLES `clientes` WRITE;
-/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -212,7 +215,7 @@ CREATE TABLE `facturaheader` (
   KEY `fk2facturaheader_idx` (`cliente`),
   KEY `fk2facturaheader_idx1` (`tipo`),
   CONSTRAINT `fk1facturaheader` FOREIGN KEY (`servicio`) REFERENCES `servicio` (`idservicio`),
-  CONSTRAINT `fk2facturaheader` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`idClientes`),
+  CONSTRAINT `fk2facturaheader` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`idCliente`),
   CONSTRAINT `fk3facturaheader` FOREIGN KEY (`tipo`) REFERENCES `categoria` (`idcategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -266,8 +269,8 @@ CREATE TABLE `regimenfiscal` (
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(300) NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `pk1` FOREIGN KEY (`id`) REFERENCES `clientes` (`regimenFiscal`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `pk1` FOREIGN KEY (`id`) REFERENCES `cliente` (`regimenFiscal`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,6 +279,7 @@ CREATE TABLE `regimenfiscal` (
 
 LOCK TABLES `regimenfiscal` WRITE;
 /*!40000 ALTER TABLE `regimenfiscal` DISABLE KEYS */;
+INSERT INTO `regimenfiscal` VALUES (1,'españa','España Normal');
 /*!40000 ALTER TABLE `regimenfiscal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,4 +346,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-24  8:28:09
+-- Dump completed on 2023-02-24 10:26:16
