@@ -3,7 +3,8 @@ package com.carlos.funeraria.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +18,8 @@ public class FacturaEntity {
 	@Column(name = "servicio")
 	private Integer servicio;
 
-	@OneToMany(mappedBy = "listaFacturas")
+	@ManyToOne
+	@JoinColumn(name="cliente")
 	private ClienteEntity cliente;
 
 	@Column(name = "tipo")

@@ -6,12 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ManyToAny;
+
 @Entity
 @Table(name = "regimenfiscal")
-public class RegimenFiscal {
+public class RegimenFiscalEntity {
 
 	@Id
 	@Column(name = "id")
@@ -23,19 +26,18 @@ public class RegimenFiscal {
 	@Column(name = "descripcion")
 	private String descripcion;
 
-	@OneToMany
-	@JoinColumn(name = "regimenFiscal")
-	private Set<ClienteEntity> listaFacturas;
+	@OneToMany(mappedBy = "regimenFiscal")
+	private Set<ClienteEntity> clientes;
 
-	public RegimenFiscal(Integer id, String nombre, String descripcion, Set<ClienteEntity> listaFacturas) {
+	public RegimenFiscalEntity(Integer id, String nombre, String descripcion, Set<ClienteEntity> clientes) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.listaFacturas = listaFacturas;
+		this.clientes = clientes;
 	}
 
-	public RegimenFiscal() {
+	public RegimenFiscalEntity() {
 		super();
 	}
 
@@ -63,11 +65,11 @@ public class RegimenFiscal {
 		this.descripcion = descripcion;
 	}
 
-	public Set<ClienteEntity> getListaFacturas() {
-		return listaFacturas;
+	public Set<ClienteEntity> getClientes() {
+		return clientes;
 	}
 
-	public void setListaFacturas(Set<ClienteEntity> listaFacturas) {
-		this.listaFacturas = listaFacturas;
+	public void setClientes(Set<ClienteEntity> clientes) {
+		this.clientes = clientes;
 	}
 }
