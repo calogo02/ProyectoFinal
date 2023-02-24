@@ -8,11 +8,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "facturaHeader")
+@Table(name = "facturaheader")
 public class FacturaEntity {
 
 	@Id
-	@Column(name = "idFactura")
+	@Column(name = "idfactura")
 	private Integer idFactura;
 
 	@Column(name = "servicio")

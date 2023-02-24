@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class ClienteEntity {
 	
 	@Id
-	@Column(name = "idCliente")
+	@Column(name = "idcliente")
 	private Integer idCliente;
 	
 	@Column(name = "nombre")
@@ -25,13 +25,13 @@ public class ClienteEntity {
 	private String apellidos;
 
 	@ManyToOne
-	@JoinColumn(name="regimenFiscal")
+	@JoinColumn(name="regimenfiscal")
 	private RegimenFiscalEntity regimenFiscal;
 	
 	@Column(name = "direccion")
 	private String direccion;
 	
-	@Column(name = "metodoPago")
+	@Column(name = "metodopago")
 	private String metodoDePago;
 	
 	@OneToMany(mappedBy = "cliente")
@@ -91,6 +91,10 @@ public class ClienteEntity {
 
 	public void setListaFacturas(Set<FacturaEntity> listaFacturas) {
 		this.listaFacturas = listaFacturas;
+	}
+
+	public ClienteEntity() {
+		super();
 	}
 
 	public ClienteEntity(Integer idCliente, String nombre, String apellidos, RegimenFiscalEntity regimenFiscal,
