@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.carlos.funeraria.entities.UserEntity;
@@ -13,12 +12,11 @@ import com.carlos.funeraria.service.IUsersService;
 
 
 @RestController
-@RequestMapping(name = "v1")
 public class UsersRestController {
 	@Autowired
 	IUsersService usersService;
 	
-	@PostMapping(name = "registro")
+	@PostMapping(value = "/registro")
 	public ResponseEntity<String> registerUser(@RequestBody UserEntity nuevoUsuario) {
 		
 		try {
@@ -29,5 +27,7 @@ public class UsersRestController {
 		}
 		return new ResponseEntity<>("Registro Completado", HttpStatus.OK);		
 	}
+
+
 
 }

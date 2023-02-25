@@ -20,6 +20,7 @@ public class UsersDAOImpl implements IUsersDAO{
 	@Override
 	public String registerUser(UserEntity nuevoUsuario) {
 		AuthoritiesEntity autoridadPorDefecto = new AuthoritiesEntity(nuevoUsuario.getUsername(), "ROLE_ADMINISTRATIVO");
+		nuevoUsuario.setEnabled(1);
 		usersRepository.save(nuevoUsuario);
 		authorityRepository.save(autoridadPorDefecto);
 		return nuevoUsuario.getUsername();

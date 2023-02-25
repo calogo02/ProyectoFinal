@@ -12,7 +12,7 @@ public class UserEntity {
 	@Column(name = "username")
 	private String username;
 
-	@Column(name = "authority")
+	@Column(name = "password")
 	private String password;
 
 	@Column(name = "enabled")
@@ -24,6 +24,12 @@ public class UserEntity {
 		this.password = password;
 		this.enabled = enabled;
 	}
+	
+
+	public UserEntity() {
+		super();
+	}
+
 
 	public UserEntity(String username, String password) {
 		super();

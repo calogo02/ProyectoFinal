@@ -2,12 +2,14 @@ package com.carlos.funeraria.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "authorities")
 public class AuthoritiesEntity {
 
+	@Id
 	@Column(name = "username")
 	private String username;
 
@@ -18,6 +20,10 @@ public class AuthoritiesEntity {
 		super();
 		this.username = username;
 		this.authority = authority;
+	}
+
+	public AuthoritiesEntity() {
+		super();
 	}
 
 	public String getUsername() {
