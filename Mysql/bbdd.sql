@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `serviciosfunerarios` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `serviciosfunerarios`;
--- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: serviciosfunerarios
 -- ------------------------------------------------------
--- Server version	8.0.29
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `authorities` (
   `username` varchar(50) NOT NULL,
   `authority` varchar(50) NOT NULL,
   UNIQUE KEY `ix_auth_username` (`username`,`authority`),
-  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -157,7 +157,6 @@ CREATE TABLE `difunto` (
   `iddifunto` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `apellidos` varchar(45) NOT NULL,
-  `Identificador` varchar(45) NOT NULL,
   `fechadefuncion` varchar(45) NOT NULL,
   PRIMARY KEY (`iddifunto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -242,7 +241,6 @@ CREATE TABLE `productos` (
   `categoria` int DEFAULT NULL,
   `nombreproducto` varchar(45) DEFAULT NULL,
   `precioUnitario` varchar(45) DEFAULT NULL,
-  `productoscol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idproducto`),
   KEY `fk1productos_idx` (`categoria`),
   CONSTRAINT `fk1productos` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`idcategoria`)
@@ -294,7 +292,7 @@ DROP TABLE IF EXISTS `servicio`;
 CREATE TABLE `servicio` (
   `idservicio` int NOT NULL AUTO_INCREMENT,
   `fechaservicio` date NOT NULL,
-  `velatorio` varchar(10) DEFAULT NULL,
+  `velatorio` varchar(100) DEFAULT NULL,
   `enterramiento` varchar(100) DEFAULT NULL,
   `iddifunto` int NOT NULL,
   `literales` tinyint(1) NOT NULL DEFAULT '0',
@@ -323,7 +321,7 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -347,4 +345,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-25  6:44:15
+-- Dump completed on 2023-02-26  7:12:06
