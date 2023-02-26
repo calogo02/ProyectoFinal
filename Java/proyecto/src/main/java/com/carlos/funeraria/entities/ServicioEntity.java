@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class ServicioEntity {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "idservicio")
 	private Integer idServicio;
 
 	@OneToOne

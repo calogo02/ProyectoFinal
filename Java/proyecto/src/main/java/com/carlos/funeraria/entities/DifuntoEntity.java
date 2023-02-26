@@ -7,7 +7,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "facturaheader")
+@Table(name = "difunto")
 public class DifuntoEntity {
 
 	@Id
