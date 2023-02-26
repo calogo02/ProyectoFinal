@@ -1,10 +1,13 @@
 package com.carlos.funeraria.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,17 +18,22 @@ public class FacturaEntity {
 	@Column(name = "idfactura")
 	private Integer idFactura;
 
-	@Column(name = "servicio")
-	private Integer servicio;
+	@ManyToOne
+	@JoinColumn(name="servicio")
+	private ServicioEntity servicio;
 
 	@ManyToOne
 	@JoinColumn(name="cliente")
 	private ClienteEntity cliente;
 
-	@Column(name = "tipo")
-	private Integer categoria;
+	@ManyToOne
+	@JoinColumn(name="tipo")
+	private CategorioEntity categoria;
 
-	public FacturaEntity(Integer idFactura, Integer servicio, ClienteEntity cliente, Integer categoria) {
+	@OneToMany(mappedBy = "factura")
+	private List<LineaDeProductoEntity> lineasDeProducto; 
+	
+	public FacturaEntity(Integer idFactura, ServicioEntity servicio, ClienteEntity cliente, CategorioEntity categoria) {
 		super();
 		this.idFactura = idFactura;
 		this.servicio = servicio;
@@ -37,6 +45,8 @@ public class FacturaEntity {
 		super();
 	}
 
+
+
 	public Integer getIdFactura() {
 		return idFactura;
 	}
@@ -45,11 +55,11 @@ public class FacturaEntity {
 		this.idFactura = idFactura;
 	}
 
-	public Integer getServicio() {
+	public ServicioEntity getServicio() {
 		return servicio;
 	}
 
-	public void setServicio(Integer servicio) {
+	public void setServicio(ServicioEntity servicio) {
 		this.servicio = servicio;
 	}
 
@@ -61,11 +71,11 @@ public class FacturaEntity {
 		this.cliente = cliente;
 	}
 
-	public Integer getCategoria() {
+	public CategorioEntity getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Integer categoria) {
+	public void setCategoria(CategorioEntity categoria) {
 		this.categoria = categoria;
 	}
 

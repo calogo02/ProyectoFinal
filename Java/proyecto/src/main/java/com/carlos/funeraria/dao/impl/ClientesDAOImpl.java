@@ -29,7 +29,7 @@ public class ClientesDAOImpl implements IClientesDAO {
 					clienteEntity.getRegimenFiscal().getNombre(), clienteEntity.getRegimenFiscal().getDescripcion());
 			List<FacturasDTO> listaFacturasCliente = new ArrayList<>();
 			for (FacturaEntity factura : clienteEntity.getListaFacturas()) {
-				FacturasDTO nuevaFactura = new FacturasDTO(factura.getIdFactura(), factura.getCategoria(), factura.getServicio().toString());
+				FacturasDTO nuevaFactura = new FacturasDTO(factura.getIdFactura(), factura.getCategoria().getId(), factura.getCategoria().getNombre());
 				listaFacturasCliente.add(nuevaFactura);
 			}
 			ClienteDTO nuevoCliente = new ClienteDTO(clienteEntity.getIdCliente(), clienteEntity.getNombre(),
