@@ -7,4 +7,6 @@ import com.carlos.gestion.dto.ServicioDTO;
 public interface IServiciosDAO {
 	public List<ServicioDTO> listarTodosLosServicios();
 
+	public ServicioDTO listarServicioPorId(Integer id);
+
 }

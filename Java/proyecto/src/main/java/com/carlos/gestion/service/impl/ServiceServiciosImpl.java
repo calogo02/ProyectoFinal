@@ -19,4 +19,9 @@ public class ServiceServiciosImpl implements IServiceServicios{
 		return servicios.listarTodosLosServicios();
 	}
 
+	@Override
+	public ServicioDTO listarServicioPorID(Integer id) {
+		return servicios.listarServicioPorId(id);
+	}
+
 }
