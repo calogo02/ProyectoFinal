@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.carlos.gestion.dto.ClienteDTO;
 import com.carlos.gestion.dto.ServicioDTO;
 import com.carlos.gestion.service.IServiceServicios;
 
