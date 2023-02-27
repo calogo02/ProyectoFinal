@@ -4,7 +4,7 @@ USE `serviciosfunerarios`;
 --
 -- Host: localhost    Database: serviciosfunerarios
 -- ------------------------------------------------------
--- Server version	8.0.22
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -157,9 +157,9 @@ CREATE TABLE `difunto` (
   `iddifunto` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `apellidos` varchar(45) NOT NULL,
-  `fechadefuncion` varchar(45) NOT NULL,
+  `fechadefuncion` date NOT NULL,
   PRIMARY KEY (`iddifunto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,6 +168,7 @@ CREATE TABLE `difunto` (
 
 LOCK TABLES `difunto` WRITE;
 /*!40000 ALTER TABLE `difunto` DISABLE KEYS */;
+INSERT INTO `difunto` VALUES (1,'pepe','truco','2021-02-01');
 /*!40000 ALTER TABLE `difunto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,4 +346,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-26  7:12:06
+-- Dump completed on 2023-02-27  8:46:47
