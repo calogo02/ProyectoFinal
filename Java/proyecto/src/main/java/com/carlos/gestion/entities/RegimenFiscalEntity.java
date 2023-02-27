@@ -1,4 +1,4 @@
-package com.carlos.funeraria.entities;
+package com.carlos.gestion.entities;
 
 import java.util.Set;
 

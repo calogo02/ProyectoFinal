@@ -1,6 +1,6 @@
-package com.carlos.funeraria.service;
+package com.carlos.gestion.service;
 
-import com.carlos.funeraria.entities.UserEntity;
+import com.carlos.gestion.entities.UserEntity;
 
 public interface IUsersService {
 	public String registerUser(UserEntity nuevoUsuario);

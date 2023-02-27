@@ -1,4 +1,4 @@
-package com.carlos.funeraria;
+package com.carlos.gestion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

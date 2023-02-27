@@ -1,4 +1,4 @@
-package com.carlos.funeraria.configuracion;
+package com.carlos.gestion.configuracion;
 
 import javax.sql.DataSource;
 
@@ -31,9 +31,9 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
-			.antMatchers("/alumnos/listadoalumnos").hasAnyRole("DIRECTOR", "SECRETARIO")
-			.antMatchers("/alumnos/formularioactualizaralumnos").hasRole("DIRECTOR")
-			.antMatchers("/v1/alumnos").hasRole("DIRECTOR")
+			.antMatchers("/alumnos/listadoalumnos").hasAnyRole("ADMINISTRATIVO", "GESTOR")
+			.antMatchers("/alumnos/formularioactualizaralumnos").hasRole("GESTOR")
+			.antMatchers("/v1/alumnos").hasRole("GESTOR")
 			.and()
 		.formLogin()
 			.loginPage("/login")

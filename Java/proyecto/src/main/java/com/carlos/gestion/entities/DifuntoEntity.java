@@ -1,4 +1,4 @@
-package com.carlos.funeraria.entities;
+package com.carlos.gestion.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,15 +18,15 @@ public class DifuntoEntity {
 	private String nombre;
 
 	@Column(name = "apellidos")
-	private Integer apellidos;
+	private String apellidos;
 
 	@Column(name = "fechadefuncion")
-	private Integer fechaDefuncion;
+	private String fechaDefuncion;
 
-	@OneToOne(mappedBy = "idDifunto")
+	@OneToOne(mappedBy = "difunto")
 	private ServicioEntity servicio;
 
-	public DifuntoEntity(Integer idDifunto, String nombre, Integer apellidos, Integer fechaDefuncion,
+	public DifuntoEntity(Integer idDifunto, String nombre, String apellidos, String fechaDefuncion,
 			ServicioEntity servicio) {
 		super();
 		this.idDifunto = idDifunto;
@@ -52,19 +52,19 @@ public class DifuntoEntity {
 		this.nombre = nombre;
 	}
 
-	public Integer getApellidos() {
+	public String getApellidos() {
 		return apellidos;
 	}
 
-	public void setApellidos(Integer apellidos) {
+	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
-	public Integer getFechaDefuncion() {
+	public String getFechaDefuncion() {
 		return fechaDefuncion;
 	}
 
-	public void setFechaDefuncion(Integer fechaDefuncion) {
+	public void setFechaDefuncion(String fechaDefuncion) {
 		this.fechaDefuncion = fechaDefuncion;
 	}
 

@@ -1,15 +1,15 @@
-package com.carlos.funeraria.dao.impl;
+package com.carlos.gestion.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.carlos.funeraria.dao.IUsersDAO;
-import com.carlos.funeraria.entities.AuthoritiesEntity;
-import com.carlos.funeraria.entities.UserEntity;
-import com.carlos.funeraria.repositories.AuthorityRepository;
-import com.carlos.funeraria.repositories.UsersRepository;
+import com.carlos.gestion.dao.IUsersDAO;
+import com.carlos.gestion.entities.AuthoritiesEntity;
+import com.carlos.gestion.entities.UserEntity;
+import com.carlos.gestion.repositories.AuthorityRepository;
+import com.carlos.gestion.repositories.UsersRepository;
 
 @Component
 public class UsersDAOImpl implements IUsersDAO {

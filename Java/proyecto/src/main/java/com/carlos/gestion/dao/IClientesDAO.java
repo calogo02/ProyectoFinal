@@ -1,8 +1,8 @@
-package com.carlos.funeraria.dao;
+package com.carlos.gestion.dao;
 
 import java.util.List;
 
-import com.carlos.funeraria.dto.ClienteDTO;
+import com.carlos.gestion.dto.ClienteDTO;
 
 public interface IClientesDAO {
 

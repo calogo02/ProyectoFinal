@@ -1,4 +1,4 @@
-package com.carlos.funeraria.entities;
+package com.carlos.gestion.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,16 +17,16 @@ public class ServicioEntity {
 
 	@OneToOne
 	@JoinColumn(name = "iddifunto")
-	private DifuntoEntity idDifunto;
+	private DifuntoEntity difunto;
 
 	@Column(name = "fechaservicio")
 	private String fechaServicio;
 
 	@Column(name = "velatorio")
-	private Integer velatorio;
+	private String velatorio;
 
 	@Column(name = "enterramiento")
-	private Integer enterramiento;
+	private String enterramiento;
 
 	@Column(name = "literales")
 	private Integer literales;
@@ -42,12 +42,12 @@ public class ServicioEntity {
 		this.idServicio = idServicio;
 	}
 
-	public DifuntoEntity getIdDifunto() {
-		return idDifunto;
+	public DifuntoEntity getDifunto() {
+		return difunto;
 	}
 
-	public void setIdDifunto(DifuntoEntity idDifunto) {
-		this.idDifunto = idDifunto;
+	public void setDifunto(DifuntoEntity difunto) {
+		this.difunto = difunto;
 	}
 
 	public String getFechaServicio() {
@@ -58,19 +58,19 @@ public class ServicioEntity {
 		this.fechaServicio = fechaServicio;
 	}
 
-	public Integer getVelatorio() {
+	public String getVelatorio() {
 		return velatorio;
 	}
 
-	public void setVelatorio(Integer velatorio) {
+	public void setVelatorio(String velatorio) {
 		this.velatorio = velatorio;
 	}
 
-	public Integer getEnterramiento() {
+	public String getEnterramiento() {
 		return enterramiento;
 	}
 
-	public void setEnterramiento(Integer enterramiento) {
+	public void setEnterramiento(String enterramiento) {
 		this.enterramiento = enterramiento;
 	}
 
@@ -94,11 +94,11 @@ public class ServicioEntity {
 		super();
 	}
 
-	public ServicioEntity(Integer idServicio, DifuntoEntity idDifunto, String fechaServicio, Integer velatorio,
-			Integer enterramiento, Integer literales, Integer ultimasvoluntades) {
+	public ServicioEntity(Integer idServicio, DifuntoEntity idDifunto, String fechaServicio, String velatorio,
+			String enterramiento, Integer literales, Integer ultimasvoluntades) {
 		super();
 		this.idServicio = idServicio;
-		this.idDifunto = idDifunto;
+		this.difunto = idDifunto;
 		this.fechaServicio = fechaServicio;
 		this.velatorio = velatorio;
 		this.enterramiento = enterramiento;

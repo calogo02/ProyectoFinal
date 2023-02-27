@@ -1,4 +1,4 @@
-package com.carlos.funeraria.controladores;
+package com.carlos.gestion.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.carlos.funeraria.entities.UserEntity;
-import com.carlos.funeraria.service.IUsersService;
+import com.carlos.gestion.entities.UserEntity;
+import com.carlos.gestion.service.IUsersService;
 
 
 @RestController

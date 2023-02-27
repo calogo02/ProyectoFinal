@@ -1,4 +1,4 @@
-package com.carlos.funeraria.dto;
+package com.carlos.gestion.dto;
 
 public class FacturasDTO {
 

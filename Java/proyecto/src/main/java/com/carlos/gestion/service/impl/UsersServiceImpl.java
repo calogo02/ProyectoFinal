@@ -1,14 +1,14 @@
-package com.carlos.funeraria.service.impl;
+package com.carlos.gestion.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.carlos.funeraria.dao.IUsersDAO;
-import com.carlos.funeraria.entities.UserEntity;
-import com.carlos.funeraria.service.IUsersService;
+import com.carlos.gestion.dao.IUsersDAO;
+import com.carlos.gestion.entities.UserEntity;
+import com.carlos.gestion.service.IUsersService;
 
 @Component
-public class IUsersServiceImpl implements IUsersService{
+public class UsersServiceImpl implements IUsersService{
 	@Autowired
 	IUsersDAO usersDAO;
 	

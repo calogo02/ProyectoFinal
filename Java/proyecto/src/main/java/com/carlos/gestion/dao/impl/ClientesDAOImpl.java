@@ -1,4 +1,4 @@
-package com.carlos.funeraria.dao.impl;
+package com.carlos.gestion.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.carlos.funeraria.dao.IClientesDAO;
-import com.carlos.funeraria.dto.ClienteDTO;
-import com.carlos.funeraria.dto.FacturasDTO;
-import com.carlos.funeraria.dto.RegimenFiscalDTO;
-import com.carlos.funeraria.entities.ClienteEntity;
-import com.carlos.funeraria.entities.FacturaEntity;
-import com.carlos.funeraria.repositories.ClienteRepository;
+import com.carlos.gestion.dao.IClientesDAO;
+import com.carlos.gestion.dto.ClienteDTO;
+import com.carlos.gestion.dto.FacturasDTO;
+import com.carlos.gestion.dto.RegimenFiscalDTO;
+import com.carlos.gestion.entities.ClienteEntity;
+import com.carlos.gestion.entities.FacturaEntity;
+import com.carlos.gestion.repositories.ClienteRepository;
 
 @Component
 public class ClientesDAOImpl implements IClientesDAO {
