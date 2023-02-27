@@ -31,7 +31,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
-			.antMatchers("/alumnos/listadoalumnos").hasAnyRole("ADMINISTRATIVO", "GESTOR")
+			.antMatchers("/clientes").hasAnyRole("ADMINISTRATIVO", "GESTOR")
 			.antMatchers("/alumnos/formularioactualizaralumnos").hasRole("GESTOR")
 			.antMatchers("/v1/alumnos").hasRole("GESTOR")
 			.and()
@@ -47,6 +47,8 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 		http.csrf().disable();
 
 	}
+
+
 	
 
 }
