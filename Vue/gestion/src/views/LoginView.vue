@@ -18,17 +18,18 @@ export default {
         }
     }, methods: {
         async iniciarSesion() {
-            var data = new FormData();
-            data.append('username', 'prueba2');
-            data.append('password', '1234');
-
+            var data = JSON.stringify({
+                "username": "3",
+                "password": "1234"
+            });
             var config = {
-                method: 'get',
+                method: 'post',
                 maxBodyLength: Infinity,
-                url: 'http://localhost:8080/tfg/login',
+                url: 'http://localhost:8080/tfg/autenticacion',
                 headers: {
-                    'Cookie': "JSESSIONID=3D4945077C6E5A952A58D12B06A9CB36"
-                }
+                    'Content-Type': 'application/json'
+                },
+                data: data
             };
             axios(config)
                 .then(function (response) {
