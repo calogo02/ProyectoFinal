@@ -1,0 +1,14 @@
+		http.authorizeHttpRequests()
+		.antMatchers("/clientes").hasAnyRole("ADMINISTRATIVO", "GESTOR")
+			.and()
+		.formLogin()
+		.loginProcessingUrl("/login")
+		.defaultSuccessUrl("/user/logincheck")
+		.failureUrl("/user/loginfail")
+		.failureForwardUrl("/user/loginfail")
+			.and()
+		.logout()
+			.logoutUrl("/haz_logout")
+		
+			.deleteCookies("JSESSIONID")
+		;
