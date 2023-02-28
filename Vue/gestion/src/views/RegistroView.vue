@@ -37,7 +37,7 @@ export default {
                 "username": this.username,
                 "password": this.password
             };
-            let respuesta = await axios.post("http://localhost:8080/tfg/registro", data)
+            let respuesta = await axios.get("http://localhost:8080/tfg/registro", data)
 
             this.mensaje = respuesta;
         }

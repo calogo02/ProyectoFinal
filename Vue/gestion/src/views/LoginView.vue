@@ -19,12 +19,24 @@ export default {
     }, methods: {
         async iniciarSesion() {
             var data = new FormData();
-            var data = {
-                "username": this.username,
-                "password": this.password
+            data.append('username', 'prueba2');
+            data.append('password', '1234');
+
+            var config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:8080/tfg/login',
+                headers: {
+                    'Cookie': "JSESSIONID=3D4945077C6E5A952A58D12B06A9CB36"
+                }
             };
-            let respuesta = await axios.post("http://localhost:8080/tfg/login", data)
-            console.log(respuesta)
+            axios(config)
+                .then(function (response) {
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     },
 }
