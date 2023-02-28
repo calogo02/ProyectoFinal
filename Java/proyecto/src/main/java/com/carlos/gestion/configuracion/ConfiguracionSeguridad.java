@@ -11,8 +11,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.carlos.gestion.jwt.JwtRequestFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -21,6 +25,9 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	DataSource dataSource;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private JwtRequestFilter jwtRequestFilter;
 
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -36,22 +43,13 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeHttpRequests()
-				.antMatchers("/clientes").hasAnyRole("ADMINISTRATIVO", "GESTOR")
-				.antMatchers("/login").permitAll().and().cors().and()
-				.formLogin()
-				.loginProcessingUrl("/login")
-				.defaultSuccessUrl("/user/logincheck")
-				.failureUrl("/user/loginfail")
-				.failureForwardUrl("/user/loginfail")
-				.and()
-				.logout()
-				.logoutUrl("/haz_logout")
-				.deleteCookies("JSESSIONID")
-				.and()
-				.csrf().disable()
-
-		;
-
+		.antMatchers("/clientes").hasRole("ADMINISTRATIVO")
+		.antMatchers("/v1/servicios").hasRole("ADMINISTRATIVO")
+		.antMatchers("/registro").permitAll()
+		.antMatchers("/autenticacion").permitAll().anyRequest().authenticated().and().sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+		http.cors().and().csrf().disable();
 	}
 	@Bean
 	public JdbcUserDetailsManager jdbcUserDetailsManager() {
