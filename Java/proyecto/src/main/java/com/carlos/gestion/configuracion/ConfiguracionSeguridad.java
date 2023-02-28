@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	@Autowired
 	DataSource dataSource;
@@ -31,19 +31,18 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
-			.antMatchers("/clientes").hasAnyRole("ADMINISTRATIVO", "GESTOR")
-			.antMatchers("/alumnos/formularioactualizaralumnos").hasRole("GESTOR")
-			.antMatchers("/v1/alumnos").hasRole("GESTOR")
+		.antMatchers("/clientes").hasAnyRole("ADMINISTRATIVO", "GESTOR")
 			.and()
 		.formLogin()
-			.loginPage("/login")
-			.failureUrl("/login?error=true")
+		.loginProcessingUrl("/login")
+		.defaultSuccessUrl("/user/logincheck")
+		.failureUrl("/user/loginfail")
+		.failureForwardUrl("/user/loginfail")
 			.and()
 		.logout()
 			.logoutUrl("/haz_logout")
-			.logoutSuccessUrl("/login")
 			.deleteCookies("JSESSIONID")
-		;
+		;		
 		http.csrf().disable();
 
 	}

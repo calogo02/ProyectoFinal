@@ -16,6 +16,8 @@ public class ClientesRestController {
 	
 	@GetMapping(value = "/clientes")
 	public List<ClienteDTO> recuperarTodosLosClientes() {
+		
+		System.out.println("prueba");
 		return clientesService.listarTodosLosClientes();
 	}
 
