@@ -90,7 +90,7 @@ public class ClientesDAOImpl implements IClientesDAO {
 		}
 		ClienteDTO nuevoCliente = new ClienteDTO(clienteEntity.getIdCliente(), clienteEntity.getNombre(),
 				clienteEntity.getApellidos(), regimenFiscal, clienteEntity.getDireccion(),
-				clienteEntity.getMetodoDePago(), listaFacturasCliente);
+				clienteEntity.getMetodoDePago(), clienteEntity.getCorreoElectronico(), clienteEntity.getTelefono(), clienteEntity.getDni() , listaFacturasCliente);
 		return nuevoCliente;
 	}
 

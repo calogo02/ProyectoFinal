@@ -10,6 +10,9 @@ public class ClienteDTO {
 	private RegimenFiscalDTO regimenFiscal;
 	private String direccion;
 	private String metodoPago;
+	private String correoElectronico;
+	private String telefono;
+	private String dni;
 	private List<FacturasDTO> listaFacturas;
 
 	public Integer getId() {
@@ -67,9 +70,30 @@ public class ClienteDTO {
 	public void setListaFacturas(List<FacturasDTO> listaFacturas) {
 		this.listaFacturas = listaFacturas;
 	}
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 
+	public ClienteDTO() {
+		super();
+	}
 	public ClienteDTO(Integer id, String nombre, String apellidos, RegimenFiscalDTO regimenFiscal, String direccion,
-			String metodoPago, List<FacturasDTO> listaFacturas) {
+			String metodoPago, String correoElectronico, String telefono, String dni, List<FacturasDTO> listaFacturas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -77,7 +101,11 @@ public class ClienteDTO {
 		this.regimenFiscal = regimenFiscal;
 		this.direccion = direccion;
 		this.metodoPago = metodoPago;
+		this.correoElectronico = correoElectronico;
+		this.telefono = telefono;
+		this.dni = dni;
 		this.listaFacturas = listaFacturas;
 	}
+
 
 }
