@@ -23,18 +23,20 @@ public class DifuntoEntity {
 	@Column(name = "fechadefuncion")
 	private String fechaDefuncion;
 
+	@Column(name = "dni")
+	private String dni;
+
 	@OneToOne(mappedBy = "difunto")
 	private ServicioEntity servicio;
 
-	public DifuntoEntity(Integer idDifunto, String nombre, String apellidos, String fechaDefuncion,
-			ServicioEntity servicio) {
-		super();
-		this.idDifunto = idDifunto;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.fechaDefuncion = fechaDefuncion;
-		this.servicio = servicio;
+	public String getDni() {
+		return dni;
 	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+
 
 	public Integer getIdDifunto() {
 		return idDifunto;
@@ -78,6 +80,16 @@ public class DifuntoEntity {
 
 	public DifuntoEntity() {
 		super();
+	}
+	public DifuntoEntity(Integer idDifunto, String nombre, String apellidos, String fechaDefuncion, String dni,
+			ServicioEntity servicio) {
+		super();
+		this.idDifunto = idDifunto;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.fechaDefuncion = fechaDefuncion;
+		this.dni = dni;
+		this.servicio = servicio;
 	}
 
 }

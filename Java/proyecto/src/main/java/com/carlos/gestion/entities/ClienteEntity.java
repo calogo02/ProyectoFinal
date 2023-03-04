@@ -15,12 +15,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cliente")
 public class ClienteEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idcliente")
 	private Integer idCliente;
-	
+
 	@Column(name = "nombre")
 	private String nombre;
 
@@ -28,15 +28,24 @@ public class ClienteEntity {
 	private String apellidos;
 
 	@ManyToOne
-	@JoinColumn(name="regimenfiscal")
+	@JoinColumn(name = "regimenfiscal")
 	private RegimenFiscalEntity regimenFiscal;
-	
+
 	@Column(name = "direccion")
 	private String direccion;
-	
+
 	@Column(name = "metodopago")
 	private String metodoDePago;
-	
+
+	@Column(name = "correoelectronico")
+	private String correoElectronico;
+
+	@Column(name = "telefono")
+	private String telefono;
+
+	@Column(name = "dni")
+	private String dni;
+
 	@OneToMany(mappedBy = "cliente")
 	private Set<FacturaEntity> listaFacturas;
 
@@ -88,6 +97,30 @@ public class ClienteEntity {
 		this.metodoDePago = metodoDePago;
 	}
 
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
 	public Set<FacturaEntity> getListaFacturas() {
 		return listaFacturas;
 	}
@@ -101,7 +134,8 @@ public class ClienteEntity {
 	}
 
 	public ClienteEntity(Integer idCliente, String nombre, String apellidos, RegimenFiscalEntity regimenFiscal,
-			String direccion, String metodoDePago, Set<FacturaEntity> listaFacturas) {
+			String direccion, String metodoDePago, String correoElectronico, String telefono, String dni,
+			Set<FacturaEntity> listaFacturas) {
 		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;
@@ -109,8 +143,10 @@ public class ClienteEntity {
 		this.regimenFiscal = regimenFiscal;
 		this.direccion = direccion;
 		this.metodoDePago = metodoDePago;
+		this.correoElectronico = correoElectronico;
+		this.telefono = telefono;
+		this.dni = dni;
 		this.listaFacturas = listaFacturas;
 	}
-
 
 }
