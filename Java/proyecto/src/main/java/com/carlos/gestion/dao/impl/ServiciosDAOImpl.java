@@ -24,19 +24,11 @@ public class ServiciosDAOImpl implements IServiciosDAO {
 		Iterable<ServicioEntity> listaServicios = servicioRespository.findAll();
 		for (ServicioEntity servicioEntity : listaServicios) {
 
-			DifuntoDTO difuntoServicio = new DifuntoDTO(servicioEntity.getDifunto().getIdDifunto(),
-					servicioEntity.getDifunto().getNombre(), servicioEntity.getDifunto().getNombre(),
-					servicioEntity.getDifunto().getFechaDefuncion());
-
-			ServicioDTO servicio = new ServicioDTO(servicioEntity.getIdServicio(), servicioEntity.getFechaServicio(),
-					servicioEntity.getVelatorio(), servicioEntity.getEnterramiento(), difuntoServicio,
-					servicioEntity.getLiterales(), servicioEntity.getUltimasvoluntades());
-			listaServicioDTOs.add(servicio);
+			listaServicioDTOs.add(mapperServicioEntityServicioDTO(servicioEntity));
 		}
 
 		return listaServicioDTOs;
 	}
-
 	@Override
 	public ServicioDTO listarServicioPorId(Integer id) {
 		Optional<ServicioEntity> servicioOptional = servicioRespository.findById(id);
@@ -44,12 +36,17 @@ public class ServiciosDAOImpl implements IServiciosDAO {
 			return null;
 		}
 		ServicioEntity servicioEntity = servicioOptional.get();
+		return mapperServicioEntityServicioDTO(servicioEntity);
+	}
+	private ServicioDTO mapperServicioEntityServicioDTO(ServicioEntity servicioEntity) {
 		DifuntoDTO difuntoServicio = new DifuntoDTO(servicioEntity.getDifunto().getIdDifunto(),
 				servicioEntity.getDifunto().getNombre(), servicioEntity.getDifunto().getNombre(),
-				servicioEntity.getDifunto().getFechaDefuncion());
-		return new ServicioDTO(servicioEntity.getIdServicio(), servicioEntity.getFechaServicio(),
+				servicioEntity.getDifunto().getFechaDefuncion(), servicioEntity.getDifunto().getDni());
+
+		ServicioDTO servicio = new ServicioDTO(servicioEntity.getIdServicio(), servicioEntity.getFechaServicio(),
 				servicioEntity.getVelatorio(), servicioEntity.getEnterramiento(), difuntoServicio,
 				servicioEntity.getLiterales(), servicioEntity.getUltimasvoluntades());
+		return servicio;
 	}
 
 }
