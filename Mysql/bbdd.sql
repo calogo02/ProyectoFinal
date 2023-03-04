@@ -81,7 +81,11 @@ CREATE TABLE `cliente` (
   `regimenFiscal` int NOT NULL,
   `direccion` varchar(45) NOT NULL,
   `metodoPago` varchar(45) NOT NULL,
+  `dni` varchar(10) NOT NULL,
+  `correoelectronico` varchar(45) NOT NULL,
+  `telefono` varchar(45) NOT NULL,
   PRIMARY KEY (`idCliente`),
+  UNIQUE KEY `dni_UNIQUE` (`dni`),
   KEY `regimenFiscal_idx` (`regimenFiscal`),
   CONSTRAINT `fk1Clientes` FOREIGN KEY (`regimenFiscal`) REFERENCES `regimenfiscal` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -93,7 +97,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'prueba','prueba',1,'c/falsa','tarjeta'),(2,'Editado','a',1,'calle','efectivo');
+INSERT INTO `cliente` VALUES (1,'prueba','prueba',1,'c/falsa','tarjeta','12345789k','','');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +165,9 @@ CREATE TABLE `difunto` (
   `nombre` varchar(45) NOT NULL,
   `apellidos` varchar(45) NOT NULL,
   `fechadefuncion` varchar(45) NOT NULL,
-  PRIMARY KEY (`iddifunto`)
+  `dni` varchar(45) NOT NULL,
+  PRIMARY KEY (`iddifunto`),
+  UNIQUE KEY `dni_UNIQUE` (`dni`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -349,4 +355,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-04  7:47:37
+-- Dump completed on 2023-03-04  8:28:59
