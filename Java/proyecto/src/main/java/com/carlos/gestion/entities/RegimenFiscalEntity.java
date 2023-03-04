@@ -32,7 +32,10 @@ public class RegimenFiscalEntity {
 		this.descripcion = descripcion;
 		this.clientes = clientes;
 	}
-
+	public RegimenFiscalEntity(Integer id) {
+		super();
+		this.id = id;
+	}
 	public RegimenFiscalEntity() {
 		super();
 	}
