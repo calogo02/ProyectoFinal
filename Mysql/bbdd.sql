@@ -4,7 +4,7 @@ USE `serviciosfunerarios`;
 --
 -- Host: localhost    Database: serviciosfunerarios
 -- ------------------------------------------------------
--- Server version	8.0.30
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,6 +38,7 @@ CREATE TABLE `authorities` (
 
 LOCK TABLES `authorities` WRITE;
 /*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
+INSERT INTO `authorities` VALUES ('3','ROLE_ADMINISTRATIVO'),('admin','ROLE_GESTOR'),('debug','ROLE_ADMINISTRATIVO');
 /*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,6 +63,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria` VALUES (1,'General','Categoria General');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,8 +82,9 @@ CREATE TABLE `cliente` (
   `direccion` varchar(45) NOT NULL,
   `metodoPago` varchar(45) NOT NULL,
   PRIMARY KEY (`idCliente`),
-  KEY `regimenFiscal_idx` (`regimenFiscal`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `regimenFiscal_idx` (`regimenFiscal`),
+  CONSTRAINT `fk1Clientes` FOREIGN KEY (`regimenFiscal`) REFERENCES `regimenfiscal` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +93,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'prueba','prueba',1,'c/falsa','tarjeta');
+INSERT INTO `cliente` VALUES (1,'prueba','prueba',1,'c/falsa','tarjeta'),(2,'Editado','a',1,'calle','efectivo');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,9 +160,9 @@ CREATE TABLE `difunto` (
   `iddifunto` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `apellidos` varchar(45) NOT NULL,
-  `fechadefuncion` date NOT NULL,
+  `fechadefuncion` varchar(45) NOT NULL,
   PRIMARY KEY (`iddifunto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +171,6 @@ CREATE TABLE `difunto` (
 
 LOCK TABLES `difunto` WRITE;
 /*!40000 ALTER TABLE `difunto` DISABLE KEYS */;
-INSERT INTO `difunto` VALUES (1,'pepe','truco','2021-02-01');
 /*!40000 ALTER TABLE `difunto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,6 +200,7 @@ CREATE TABLE `facturaheader` (
 
 LOCK TABLES `facturaheader` WRITE;
 /*!40000 ALTER TABLE `facturaheader` DISABLE KEYS */;
+INSERT INTO `facturaheader` VALUES (1,NULL,1,1);
 /*!40000 ALTER TABLE `facturaheader` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,8 +271,7 @@ CREATE TABLE `regimenfiscal` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(300) NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `pk1` FOREIGN KEY (`id`) REFERENCES `cliente` (`regimenFiscal`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -334,6 +336,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('3','$2a$10$P50PD.54IZmhg6OoC7N6ce/KfnlMO/TmkUueTO9mQJHsKy8g.d.cG',1),('admin','$2a$10$INbkpvkzDACU50GhWpdwCOxEtTlJpLhI4.An5PCc7ijoY3q2UmoUK',1),('debug','$2a$10$vzhkWBxCe2PpMr.JH4xOeu2JQiJPEkB0KcXoGD1Qlef9I3hXeA13e',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -346,4 +349,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-27  8:46:47
+-- Dump completed on 2023-03-04  7:47:37
