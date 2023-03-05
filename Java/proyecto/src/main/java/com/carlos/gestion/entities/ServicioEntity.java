@@ -1,9 +1,14 @@
 package com.carlos.gestion.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -13,6 +18,7 @@ public class ServicioEntity {
 
 	@Id
 	@Column(name = "idservicio")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idServicio;
 
 	@OneToOne
@@ -33,6 +39,10 @@ public class ServicioEntity {
 
 	@Column(name = "ultimasvoluntades")
 	private Integer ultimasvoluntades;
+
+
+	@OneToMany(mappedBy = "servicio")
+	private Set<FacturaEntity> facturas;
 
 	public Integer getIdServicio() {
 		return idServicio;
@@ -90,15 +100,23 @@ public class ServicioEntity {
 		this.ultimasvoluntades = ultimasvoluntades;
 	}
 
+	public Set<FacturaEntity> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(Set<FacturaEntity> facturas) {
+		this.facturas = facturas;
+	}
+
 	public ServicioEntity() {
 		super();
 	}
 
-	public ServicioEntity(Integer idServicio, DifuntoEntity idDifunto, String fechaServicio, String velatorio,
+	public ServicioEntity(Integer idServicio, DifuntoEntity difunto, String fechaServicio, String velatorio,
 			String enterramiento, Integer literales, Integer ultimasvoluntades) {
 		super();
 		this.idServicio = idServicio;
-		this.difunto = idDifunto;
+		this.difunto = difunto;
 		this.fechaServicio = fechaServicio;
 		this.velatorio = velatorio;
 		this.enterramiento = enterramiento;
