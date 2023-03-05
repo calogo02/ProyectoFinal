@@ -168,7 +168,7 @@ CREATE TABLE `difunto` (
   `dni` varchar(45) NOT NULL,
   PRIMARY KEY (`iddifunto`),
   UNIQUE KEY `dni_UNIQUE` (`dni`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,6 +177,7 @@ CREATE TABLE `difunto` (
 
 LOCK TABLES `difunto` WRITE;
 /*!40000 ALTER TABLE `difunto` DISABLE KEYS */;
+INSERT INTO `difunto` VALUES (1,'difunto','prueba','1999/01/01','123456789k'),(2,'Niels ','Hedegaard','1978/12/29','06059096E');
 /*!40000 ALTER TABLE `difunto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +207,7 @@ CREATE TABLE `facturaheader` (
 
 LOCK TABLES `facturaheader` WRITE;
 /*!40000 ALTER TABLE `facturaheader` DISABLE KEYS */;
-INSERT INTO `facturaheader` VALUES (1,NULL,1,1);
+INSERT INTO `facturaheader` VALUES (1,1,1,1),(2,1,1,1),(3,1,1,1);
 /*!40000 ALTER TABLE `facturaheader` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,13 +304,13 @@ CREATE TABLE `servicio` (
   `fechaservicio` date NOT NULL,
   `velatorio` varchar(100) DEFAULT NULL,
   `enterramiento` varchar(100) DEFAULT NULL,
-  `iddifunto` int NOT NULL,
-  `literales` tinyint(1) NOT NULL DEFAULT '0',
-  `ultimasvoluntades` tinyint(1) NOT NULL DEFAULT '0',
+  `iddifunto` int DEFAULT NULL,
+  `literales` tinyint(1) DEFAULT '0',
+  `ultimasvoluntades` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`idservicio`),
   KEY `fk1_idx` (`iddifunto`),
   CONSTRAINT `fk1` FOREIGN KEY (`iddifunto`) REFERENCES `difunto` (`iddifunto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,6 +319,7 @@ CREATE TABLE `servicio` (
 
 LOCK TABLES `servicio` WRITE;
 /*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
+INSERT INTO `servicio` VALUES (1,'1999-01-01','ndf','ndf',1,1,1),(3,'2023-06-03','Prueba','Editar',1,0,1),(4,'2023-05-03','Prueba','Añadir',2,0,0);
 /*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-04  8:28:59
+-- Dump completed on 2023-03-05  7:51:24
