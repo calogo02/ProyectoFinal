@@ -43,8 +43,8 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeHttpRequests()
-		.antMatchers("/v1/clientes").hasRole("ADMINISTRATIVO")
-		.antMatchers("/v1/servicios").hasRole("ADMINISTRATIVO")
+		.antMatchers("/v1/**").hasAnyRole("ADMINISTRATIVO", "GESTOR")
+		.antMatchers("/v2/**").hasRole("GESTOR")
 		.antMatchers("/registro").permitAll()
 		.antMatchers("/autenticacion").permitAll().anyRequest().authenticated().and().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
