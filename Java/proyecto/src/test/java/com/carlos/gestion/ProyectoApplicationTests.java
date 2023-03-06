@@ -1,4 +1,4 @@
-package com.carlos.funeraria;
+package com.carlos.gestion;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

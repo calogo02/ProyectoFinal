@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.carlos.gestion.dto.ServicioDTO;
@@ -32,12 +33,13 @@ public class ServiciosRestController {
 	}
 
 	@GetMapping(value = "/servicios", params = { "fecha", "velatorio", "enterramiento", "nombreDifunto" })
-	public List<ServicioDTO> recuperarServiciosConFiltros(String fecha, String velatorio, String enterramiento,
-			String nombreDifunto) {
-		return servicio.listarServiciosConFiltros(fecha, velatorio, enterramiento, nombreDifunto);
+	public List<ServicioDTO> recuperarServiciosConFiltros(
+			@RequestParam(name = "fecha", defaultValue = "1000-01-01") String fecha,
+			@RequestParam(name = "velatorio", defaultValue = "") String velatorio,
+			@RequestParam(name = "enterramiento", defaultValue = "") String enterramiento,
+			@RequestParam(name = "nombreDifunto", defaultValue = "") String nombreDifunto) {
+		return servicio.listarServiciosConFiltros(fecha,nombreDifunto, velatorio, enterramiento);
 	}
-
-
 
 	@PutMapping(value = "/servicios/{id}")
 	public ResponseEntity<String> editarServicioAdministrativo(@PathVariable("id") Integer id,

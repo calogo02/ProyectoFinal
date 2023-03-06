@@ -48,8 +48,13 @@ public class ServiciosDAOImpl implements IServiciosDAO {
 	@Override
 	public List<ServicioDTO> listarServiciosConFiltros(String fecha, String velatorio, String enterramiento,
 			String nombreDifunto) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'listarServiciosConFiltros'");
+		List<ServicioDTO> listaServicioDTOs = new ArrayList<>();
+		Iterable<ServicioEntity> listaServicios = servicioRespository.findServiciosByFiltros(fecha, velatorio,
+				enterramiento, nombreDifunto);
+		for (ServicioEntity servicioEntity : listaServicios) {
+			listaServicioDTOs.add(mapperServicioEntityServicioDTO(servicioEntity));
+		}
+		return listaServicioDTOs;
 	}
 
 	@Override
@@ -94,7 +99,7 @@ public class ServiciosDAOImpl implements IServiciosDAO {
 
 	@Override
 	public Integer añadirFacturasServicio(Integer servicio, FacturaEntity[] facturas) {
-		try	{
+		try {
 			Optional<ServicioEntity> servicioOptional = servicioRespository.findById(servicio);
 			if (servicioOptional.isEmpty()) {
 				return 500;
@@ -127,7 +132,7 @@ public class ServiciosDAOImpl implements IServiciosDAO {
 
 	private ServicioDTO mapperServicioEntityServicioDTO(ServicioEntity servicioEntity) {
 		DifuntoDTO difuntoServicio = new DifuntoDTO(servicioEntity.getDifunto().getIdDifunto(),
-				servicioEntity.getDifunto().getNombre(), servicioEntity.getDifunto().getNombre(),
+				servicioEntity.getDifunto().getNombre(), servicioEntity.getDifunto().getApellidos(),
 				servicioEntity.getDifunto().getFechaDefuncion(), servicioEntity.getDifunto().getDni());
 
 		ServicioDTO servicio = new ServicioDTO(servicioEntity.getIdServicio(), servicioEntity.getFechaServicio(),
