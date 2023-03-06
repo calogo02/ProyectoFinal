@@ -319,7 +319,7 @@ CREATE TABLE `servicio` (
 
 LOCK TABLES `servicio` WRITE;
 /*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
-INSERT INTO `servicio` VALUES (1,'1999-01-01','ndf','ndf',1,1,1),(3,'2023-06-03','Prueba','Editar',1,0,1),(4,'2023-05-03','Prueba','Añadir',2,0,0);
+INSERT INTO `servicio` VALUES (1,'1999-01-01','ndf','ndf',1,1,1),(3,'2023-06-03','Prueba','Editar',2,0,1);
 /*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -357,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-05  7:51:24
+-- Dump completed on 2023-03-06  7:45:28
