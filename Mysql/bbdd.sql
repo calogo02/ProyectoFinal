@@ -102,34 +102,6 @@ INSERT INTO `cliente` VALUES (1,'prueba','prueba',1,'c/falsa','tarjeta','1234578
 UNLOCK TABLES;
 
 --
--- Table structure for table `cliente_descuento`
---
-
-DROP TABLE IF EXISTS `cliente_descuento`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cliente_descuento` (
-  `cliente` int DEFAULT NULL,
-  `descuento` int DEFAULT NULL,
-  `id` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk2_idx` (`descuento`),
-  KEY `fk1descuento` (`cliente`),
-  CONSTRAINT `fk1descuento` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`idCliente`),
-  CONSTRAINT `fk2descuento` FOREIGN KEY (`descuento`) REFERENCES `descuento` (`iddescuento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cliente_descuento`
---
-
-LOCK TABLES `cliente_descuento` WRITE;
-/*!40000 ALTER TABLE `cliente_descuento` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cliente_descuento` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `descuento`
 --
 
@@ -179,6 +151,34 @@ LOCK TABLES `difunto` WRITE;
 /*!40000 ALTER TABLE `difunto` DISABLE KEYS */;
 INSERT INTO `difunto` VALUES (1,'difunto','prueba','1999/01/01','123456789k'),(2,'Niels ','Hedegaard','1978/12/29','06059096E');
 /*!40000 ALTER TABLE `difunto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `difunto_descuento`
+--
+
+DROP TABLE IF EXISTS `difunto_descuento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `difunto_descuento` (
+  `difunto` int DEFAULT NULL,
+  `descuento` int DEFAULT NULL,
+  `id` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk2_idx` (`descuento`),
+  KEY `fk1descuento_idx` (`difunto`),
+  CONSTRAINT `fk1descuento` FOREIGN KEY (`difunto`) REFERENCES `difunto` (`iddifunto`),
+  CONSTRAINT `fk2descuento` FOREIGN KEY (`descuento`) REFERENCES `descuento` (`iddescuento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `difunto_descuento`
+--
+
+LOCK TABLES `difunto_descuento` WRITE;
+/*!40000 ALTER TABLE `difunto_descuento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `difunto_descuento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -357,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-06  7:45:28
+-- Dump completed on 2023-03-07  6:32:13
