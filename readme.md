@@ -37,13 +37,15 @@ docker run --network proyecto --name backend -p 8080:8080 calogo/tfgbackend
 
 ## Probar Api Postman
 
-#### Importar Peticiones de prueba
+### Importar Peticiones de prueba
 ![App Screenshot](https://i.imgur.com/dZtb0wW.png)
 
 ![App Screenshot](https://i.imgur.com/sYxNdnd.png)
 
-#### Login
+### Login
 ![App Screenshot](https://i.imgur.com/FzZPxjd.png)
 
-#### Cambio Token JWT
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+### Cambio Token JWT
+#### Despues de logearte deberas cambiar la variables bearer de la siguente
+
+![App Screenshot](https://i.imgur.com/6WKG0pI.png)
