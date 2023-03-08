@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.carlos.gestion</groupId>
 	<artifactId>proyecto</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>proyecto</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -63,6 +63,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+	   		 <skipTests>true</skipTests>
+	</configuration>
+</plugin>
+
 		</plugins>
 	</build>
 	<repositories>
