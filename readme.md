@@ -38,7 +38,6 @@ docker run --network proyecto --name backend -p 8080:8080 calogo/tfgbackend
 ## Probar Api Postman
 
 #### Login
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
+[Imgur](https://i.imgur.com/FzZPxjd.png)
 #### Cambio Token JWT
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
