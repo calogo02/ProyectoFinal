@@ -37,6 +37,11 @@ docker run --network proyecto --name backend -p 8080:8080 calogo/tfgbackend
 
 ## Probar Api Postman
 
+#### Importar Peticiones de prueba
+![App Screenshot](https://i.imgur.com/dZtb0wW.png)
+
+![App Screenshot](https://i.imgur.com/sYxNdnd.png)
+
 #### Login
 ![App Screenshot](https://i.imgur.com/FzZPxjd.png)
 
