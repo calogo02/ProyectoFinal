@@ -18,10 +18,11 @@ export default {
         }
     }, methods: {
         async iniciarSesion() {
-            var data = JSON.stringify({
-                "username": "3",
+            let resultado = "";
+            var data = {
+                "username": "manolo",
                 "password": "1234"
-            });
+            };
             var config = {
                 method: 'post',
                 maxBodyLength: Infinity,
@@ -31,13 +32,15 @@ export default {
                 },
                 data: data
             };
-            axios(config)
-                .then(function (response) {
-                    console.log(JSON.stringify(response.data));
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            resultado = await axios.post("http://localhost:8080/tfg/autenticacion", data)
+            if (resultado.status==200||resultado.status==201) {
+                axios.defaults.headers.common['Authorization'] = "Bearer " + resultado.request.response;
+                await this.$store.dispatch("loguearUsuario", resultado.request.response);
+                console.log(resultado.request.response)
+                this.$router.push("/");
+            }else{
+                alert("Ha fallado")
+            }
         }
     },
 }
