@@ -56,7 +56,7 @@ public class FacturasDAOImpl implements IFacturasDAO {
             facturaRepository.save(factura);
             return 1;
         } catch (Exception e) {
-            return 0;
+            return 500;
         }
     }
 
@@ -68,6 +68,8 @@ public class FacturasDAOImpl implements IFacturasDAO {
         FacturaEntity facturaEntityModificar = facturaRepository.findById(idFactura).get();
         facturaEntityModificar.setCategoria(factura.getCategoria());
         facturaEntityModificar.setCliente(factura.getCliente());
+        facturaEntityModificar.setPrecioTotal(factura.getPrecioTotal());
+        facturaEntityModificar.setServicio(factura.getServicio());
         try {
             facturaRepository.save(facturaEntityModificar);
             return 1;
