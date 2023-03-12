@@ -42,7 +42,13 @@ public class FacturasDAOImpl implements IFacturasDAO {
     public List<FacturasDTO> recuperarFacturasConFiltros(String nombreCliente, String apellidosCliente,
             String dniCliente, String nombreDifunto, String apellidosDifunto, String dniDifunto, Double precioFactura,
             String idTipoServicio, String fechaFactura) {
-            Iterable<FacturaEntity> facturasEntity = facturaRepository.recuperarFacturasConFiltros(nombreCliente, apellidosCliente, dniCliente, nombreDifunto, apellidosDifunto, dniDifunto, precioFactura, idTipoServicio, fechaFactura);
+                Iterable<FacturaEntity> facturasEntity;
+
+                if (nombreDifunto.equals("")&&dniDifunto.equals("")&&apellidosDifunto.equals("")) {
+                    facturasEntity = facturaRepository.recuperarFacturasConFiltrosSinDifunto(nombreCliente, apellidosCliente, dniCliente, precioFactura, idTipoServicio, fechaFactura);
+                }else{
+                    facturasEntity = facturaRepository.recuperarFacturasConFiltrosDifuntoIncluido(nombreCliente, apellidosCliente, dniCliente, nombreDifunto, apellidosDifunto, dniDifunto, precioFactura, idTipoServicio, fechaFactura);
+                }
             List<FacturasDTO> facturasDTO = new ArrayList<>();
             for (FacturaEntity facturaEntity : facturasEntity) {
                 facturasDTO.add(mapperFacturaEntityFacturasDTO(facturaEntity));
